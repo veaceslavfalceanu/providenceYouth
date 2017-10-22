@@ -1,0 +1,20 @@
+machine:
+  timezone: America/New_York
+
+  pre:
+  #PHP 7.1 is not pre-installed in CircleCI's Ubuntu 14.04 image, yet.
+  # In the meantime, here's how you can use PHP 7.1 on CircleCI (Ubuntu 14.04) in the same way you would other supported PHP versions:
+    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.1
+  php:
+    version: 7.1.1
+
+test:
+  pre:
+    - php -v
+    - mysql --version
+    - composer --version
+
+  override:
+    #- ./vendor/bin/phpcs src
+    #- ./vendor/bin/phpcs tests
+    - ./vendor/bin/phpunit
