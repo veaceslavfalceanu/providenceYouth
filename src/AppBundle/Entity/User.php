@@ -60,4 +60,12 @@ class User implements UserInterface
     {
         $this->email = $email;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 }
